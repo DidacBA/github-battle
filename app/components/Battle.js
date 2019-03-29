@@ -1,5 +1,6 @@
 var React = require('react');
 var PropTypes = require('prop-types');
+var Link = require('react-router-dom').Link;
 
 function PlayerPreview (props) {
   return (
@@ -24,8 +25,8 @@ function PlayerPreview (props) {
 PlayerPreview.propTypes = {
   avatar: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
+  onReset: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
-  onReset: PropTypes.func.isRequired
 }
 
 class PlayerInput extends React.Component {
@@ -118,6 +119,7 @@ class Battle extends React.Component {
     });
   }
   render() {
+    var match = this.props.match;
     var playerOneName = this.state.playerOneName;
     var playerTwoName = this.state.playerTwoName;
     var playerOneImage = this.state.playerOneImage;
@@ -155,6 +157,17 @@ class Battle extends React.Component {
               id='playerTwo'
             />}
         </div>
+        {playerOneImage && playerTwoImage &&
+          <Link
+            className='button'
+            to={{
+              pathname: match.url + '/results',
+              search: '?playerOneName=' + playerOneName + '&playerTwoName=' +
+                playerTwoName
+            }}>
+              Battle
+          </Link>}
+        
       </div>
     )
   }
