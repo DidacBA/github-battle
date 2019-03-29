@@ -8,6 +8,7 @@ var Nav = require('./Nav');
 var Home = require('./Home');
 var Battle = require('./Battle');
 var Results = require('./Results');
+require('dotenv').config();
 
 class App extends React.Component {
   render() {

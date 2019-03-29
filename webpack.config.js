@@ -22,5 +22,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'app/index.html'
     })
-  ]
+  ],
+  node: {
+    fs: 'empty' // Since dotenv is not running on Node.js
+  }
 }
