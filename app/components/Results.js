@@ -55,10 +55,10 @@ class Results extends React.Component {
   async componentDidMount () {
     const { playerOneName, playerTwoName } = queryString.parse(this.props.location.search);
 
-    const players = await (battle[
+    const players = await battle([
       playerOneName,
       playerTwoName
-    ])
+    ]);
 
     if (players === null) {
       return this.setState(() => ({
